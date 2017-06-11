@@ -17,8 +17,6 @@ var QuotesCollection = Backbone.Collection.extend({
 	}
 });
 
-var Quotes = new QuotesCollection;
-
 
 
 InputView = Backbone.View.extend({
@@ -42,23 +40,24 @@ InputView = Backbone.View.extend({
 QuotesView = Backbone.View.extend({
 	el: '#table-body',
 	initialize: function(){
+		this.randFunct();
 		this.renderQuotes();
 	},
 	randFunct: function(){
 		console.log("calling rand")
 		var quotes = new QuotesCollection({model: QuoteModel});
 		var self = this;
-		quotes.fetch({success: function(res){
-			console.log(res)
+		quotes.fetch({success: function(){
+			self.renderQuotes(quotes, "quotes")
 			}
 		});
 	},
 	renderQuotes: function(quotes){
-		console.log(quotes)
-		this.randFunct();
+		console.log(quotes, "quotes quotes")
 		this.$el.html('');
 		new InputView;
-		Quotes.each(function(model) {
+		new QuoteView;
+		quotes.each(function(model) {
 			var quote = new QuoteView({
 				model: model
 			})
@@ -69,17 +68,22 @@ QuotesView = Backbone.View.extend({
 
 });
 
+// var Quotes = new QuotesCollection({model: QuoteModel});
 
+var Quotes = new QuotesCollection;
+
+var quote1 = new QuoteModel({
+	quote: 'hello',
+	context: 'here',
+	source: 'now',
+	theme: 'forever'
+});
+
+Quotes.add(quote1);
 
 QuoteView = Backbone.View.extend({
 	tagName: 'tr',
 	template: _.template($('#quote-template').html()),
-	// renderQuotes: function(quotes){
-	// 	var quotes = []
-	// 	for(i=0;i<quotes.length;i++){
-
-	// 	}
- //    },
 	render: function() {
 	    this.$el.html(this.template(this.model.attributes));
 	    return this;
