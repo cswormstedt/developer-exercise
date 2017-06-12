@@ -11,12 +11,8 @@ var QuoteModel = Backbone.Model.extend({
 
 var QuotesCollection = Backbone.Collection.extend({
   	url: 'https://gist.githubusercontent.com/anonymous/8f61a8733ed7fa41c4ea/raw/1e90fd2741bb6310582e3822f59927eb535f6c73/quotes.json',
-  	model: QuoteModel,
- 	parse: function(data) {
-	    return data;
-	}
+  	model: QuoteModel
 });
-
 
 
 InputView = Backbone.View.extend({
@@ -27,7 +23,7 @@ InputView = Backbone.View.extend({
 	template: 
 		"<h2>Search quotes</h2> \
 		<input type='text' placeholder='search'> \
-        <button>Search movie</button> \
+        <button>Search quotes</button> \
         <ul id='quote-list'></ul>",
     render: function() {
         this.$el.html(this.template);
@@ -53,7 +49,7 @@ QuotesView = Backbone.View.extend({
 		});
 	},
 	renderQuotes: function(quotes){
-		console.log(quotes, "quotes quotes")
+		console.log(quotes, "quotes")
 		this.$el.html('');
 		new InputView;
 		new QuoteView;
@@ -68,18 +64,6 @@ QuotesView = Backbone.View.extend({
 
 });
 
-// var Quotes = new QuotesCollection({model: QuoteModel});
-
-var Quotes = new QuotesCollection;
-
-var quote1 = new QuoteModel({
-	quote: 'hello',
-	context: 'here',
-	source: 'now',
-	theme: 'forever'
-});
-
-Quotes.add(quote1);
 
 QuoteView = Backbone.View.extend({
 	tagName: 'tr',
@@ -89,6 +73,7 @@ QuoteView = Backbone.View.extend({
 	    return this;
 	}
 })
+
 
 var app = new QuotesView;
 
