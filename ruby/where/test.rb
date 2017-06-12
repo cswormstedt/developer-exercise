@@ -32,3 +32,4 @@ class WhereTest < Minitest::Test
   end
 end
 
+#just learn how to define a class and add a method to it that finds a hash in an array
