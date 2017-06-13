@@ -1,27 +1,32 @@
 
 class Array
 	def where(name: @name, quote: @quote, title: @title, rank: @rank)
-		p self.class
-		self.find {|x| x[:name] == 'The Wolf'}
+		p self
+		self.select {|x| x[:name] == name}
+		# self.select {|x| x[:title] == title}
 	end
 end
 
+#string.match regex
+
+#case statement--like switch statement
+# regex.match
 
 
 #push the test input into array
 # class Quotes 
 # 	# attr_accessor :name, :quote, :title, :rank
-	# def initialize(name, quote, title, rank)
-	# 	@name = name
-	# 	@quote = quote
-	# 	@title = title
-	# 	@rank = rank
-		
-	# 	@hash = {:name => @name, :quote => @quote, :title => @title, :rank => @rank}
+# 	def initialize(name, quote, title, rank)
+# 		@name = name
+# 		@quote = quote
+# 		@title = title
+# 		@rank = rank
+		 
+# 		@hash = {:name => @name, :quote => @quote, :title => @title, :rank => @rank}
 
 
-	# 	$hashArray.push(@hash)
-	# end
+# 		$hashArray.push(@hash)
+# 	end
 # 	def where 
 # 		# p @hash
 
