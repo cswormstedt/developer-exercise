@@ -15,6 +15,10 @@ class WhereTest < Minitest::Test
     assert_equal [@wolf], @fixtures.where(:name => 'The Wolf')
   end
 
+  def test_where_with_exact_match2
+    assert_equal [@wolf], @fixtures.where(:title => 'Pulp Fiction')
+  end
+
   def test_where_with_partial_match
     assert_equal [@charles, @glen], @fixtures.where(:title => /^B.*/)
   end

@@ -1,11 +1,96 @@
 
 class Array
 	def where(name: @name, quote: @quote, title: @title, rank: @rank)
-		p self
-		self.select {|x| x[:name] == name}
+		@name = "The Wolf"
+		el = self.select { |x| /#{@name}/.match(x[:name]) }
+
+		p el 
+		# p self
+		# case
+		# when self.select {|x| x[:name] == name}
+		# 	puts
+		# end
+		# el = self.select {|x| x[:name] == name}
+		# if el = self.select { |x| name.match(x[:name]) }
+		# 	p el
+		# elsif el = self.select { |x| title.match(x[:title]) }
+		# 	p el
+		# end
+		
 		# self.select {|x| x[:title] == title}
 	end
 end
+
+el = "lalalaB"
+if el.match(/(laB)/)
+	p "blah"
+end
+
+# needs to return the whole object if part of something that matches is inputted 
+
+# it can only return one thing
+# class Array
+# 	def where(name: @name, quote: @quote, title: @title, rank: @rank)
+# 		# if []
+# 		# 	p "sorry"
+# 		if self.select {|x| x[:name] == name} 
+# 			p self.select {|x| x[:name] == name}
+# 		end
+# 	end
+# end
+
+
+# class Array
+#   def where(name: @name, quote: @quote, title: @title, rank: @rank)
+#     return_array = []
+#     el = self.select {|x| name.match(x[:name])}
+#     p el
+
+#     return_array << self.select { |x| name.match(x[:name]) }
+#     p return_array[0]
+
+#     # return_array.select 
+
+#     # return_array << self.select { |x| !title.match(x[:title]).nil? }
+#     # return_array
+#   end
+# end
+# class Array 
+# 	def where(name: @name, quote: @quote, title: @title, rank: @rank)
+# 		if self.select {|x| x[:title] == title} 
+# 			p self.select {|x| x[:title] == title} 
+# 		end
+# 	end
+# end
+
+class Practice 
+	def practicing(a: @a, b: @b)
+		@nut = {:a => "Duhh", :b => "ughhhh"}
+		@butt = {:a => "Durrrrr", :b => "ughknjj"}
+		@array = [@nut, @butt]
+		p @array
+		p "butcher"
+	end
+end
+
+lala = Practice.new
+lala.practicing
+
+# class Yo 
+# 	def thing(name: @name, quote: @quote, title: @title, rank: @rank)
+# 		@boris = {:name => 'Boris The Blade', :quote => "Heavy is good. Heavy is reliable. If it doesn't work you can always hit them.", :title => 'Snatch', :rank => 4}
+# 		@fixtures = [@boris]
+# 		# p @fixtures
+# 		el = @fixtures.select {|x| x[:name] == 'Boris The Blade'}
+#     	p el, "this el"
+
+
+# 	end
+# end
+
+# la = Yo.new
+# la.thing
+# @fixtures.select { |x| /'B'/.match(x[:name]) }
 
 #string.match regex
 
