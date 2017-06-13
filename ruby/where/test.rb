@@ -23,17 +23,17 @@ class WhereTest < Minitest::Test
     assert_equal [@charles, @glen], @fixtures.where(:title => /^B.*/)
   end
 
-  # def test_where_with_mutliple_exact_results
-  #   assert_equal [@boris, @wolf], @fixtures.where(:rank => 4)
-  # end
+  def test_where_with_mutliple_exact_results
+    assert_equal [@boris, @wolf], @fixtures.where(:rank => 4)
+  end
 
-  # def test_with_with_multiple_criteria
-  #   assert_equal [@wolf], @fixtures.where(:rank => 4, :quote => /get/)
-  # end
+  def test_with_with_multiple_criteria
+    assert_equal [@wolf], @fixtures.where(:rank => 4, :quote => /get/)
+  end
 
-  # def test_with_chain_calls
-  #   assert_equal [@charles], @fixtures.where(:quote => /if/i).where(:rank => 3)
-  # end
+  def test_with_chain_calls
+    assert_equal [@charles], @fixtures.where(:quote => /if/i).where(:rank => 3)
+  end
 end
 
 #just learn how to define a class and add a method to it that finds a hash in an array
