@@ -29,17 +29,21 @@ class Array
     			p quote
     				return b
     		end
-    	# elsif rank
-    	# 	p rank
+    	elsif rank
+    		# @new_rank = rank.to_f
+    		p "-----"
 
-    	# 	case 
-    	# 	when b = self.select {|x| /#{rank}/.match(x[:rank])}
-    	# 		p rank
-    	# 		return rank
-    	# 	end			
+    		case 
+    		when b = self.select {|x| x[:rank] == rank}
+    			p @l
+    			p rank
+    			return b
+    		end			
     	end
     end
 end
+# /#{rank}.to_f/.match(x[:rank])
+# /#{rank}/.match(x[:rank])
 
 #{rank}
 jim = [
