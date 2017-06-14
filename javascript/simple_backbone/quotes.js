@@ -1,5 +1,3 @@
-console.log("la")
-
 var QuoteModel = Backbone.Model.extend({
 	defaults: {
 		quote: '',
@@ -36,32 +34,44 @@ InputView = Backbone.View.extend({
 QuotesView = Backbone.View.extend({
 	el: '#table-body',
 	initialize: function(){
-		this.randFunct();
-		this.renderQuotes();
+		this.fetchQuotes();
+		this.renderQuotes(); 
 	},
-	randFunct: function(){
-		console.log("calling rand")
+	fetchQuotes: function(){
 		var quotes = new QuotesCollection({model: QuoteModel});
 		var self = this;
 		quotes.fetch({success: function(){
-			self.renderQuotes(quotes, "quotes")
+			self.renderQuotes(quotes)
 			}
 		});
 	},
 	renderQuotes: function(quotes){
-		console.log(quotes, "quotes")
+		console.log(quotes, "quotes", quotes.length)
+		// var newModels = []	
+		// var newObj = {newModels}
+		// for (i = 0; i < 15; i++){
+		// 	newModels.push(quotes.models[i])
+		// }
+		//push the first fifteen items into this new object and render that
 		this.$el.html('');
 		new InputView;
 		new QuoteView;
+		var counter = 1;
+		var keepGoing = true;
 		quotes.each(function(model) {
-			var quote = new QuoteView({
+			if(counter > 15){
+				keepGoing = false;
+			}
+			if(keepGoing){
+				var quote = new QuoteView({
 				model: model
 			})
 			this.$el.append(quote.render().el);
+			counter += 1
+			}
 		}.bind(this));
-		return this;
+	return this;
 	}
-
 });
 
 

@@ -35,5 +35,3 @@ class WhereTest < Minitest::Test
     assert_equal [@charles], @fixtures.where(:quote => /if/i).where(:rank => 3)
   end
 end
-
-#just learn how to define a class and add a method to it that finds a hash in an array

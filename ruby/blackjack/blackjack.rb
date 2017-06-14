@@ -1,6 +1,7 @@
+# I am guessing that the test is failing because what goes on to the instance variable @playable_cards is scoped 
+
 class Card
   attr_accessor :suite, :name, :value
-
   def initialize(suite, name, value)
     @suite, @name, @value = suite, name, value
   end
@@ -29,7 +30,10 @@ class Deck
   end
 
   def deal_card
+    # random is a random number from 1 to the deck size
     random = rand(@playable_cards.size)
+    p @playable_cards.each_index.detect{|i| i == random}
+    # get rid of the card at the index random to show it has been dealt
     @playable_cards.delete_at(random)
   end
 
@@ -45,7 +49,6 @@ end
 
 class Hand
   attr_accessor :cards
-
   def initialize
     @cards = []
   end
